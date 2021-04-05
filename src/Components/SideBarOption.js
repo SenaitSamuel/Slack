@@ -1,56 +1,69 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
+import db from "../firebase";
+import { useDispatch } from "react-redux";
+import { enterRoom } from "../features/appSlice";
 
-function SideBarOption ( {Icon, title, addChannelOPtion}) {
-    const addChannel = () => {
+function SideBarOption({ Icon, title, addChannelOPtion, id, toggleChannel }) {
+  const dispatch = useDispatch();
 
+  const addChannel = () => {
+    const channelName = prompt("please enter the channel");
+    if (channelName) {
+      db.collection("rooms").add({
+        name: channelName,
+      });
     }
-    const selectChannel = () => {
-        
+  };
+  const selectChannel = () => {
+    if (id) {
+      dispatch(
+        enterRoom({
+          roomId: id,
+        })
+      );
     }
-    return (
-        
-        <SideBarOptionContainer 
-          onClick = { addChannelOPtion ? addChannel : selectChannel }
-        >
-            
-            {Icon && <Icon fontSize = 'small' style = {{padding:10}}    />}
-            { Icon ? (
-                <h3>{title}</h3>
-            ):(
-                <SideBarOptionChannel>
-                <span>#</span>{title}
-                </SideBarOptionChannel>
-            ) }
+  };
 
-        </SideBarOptionContainer>
-    )
+  return (
+    <SideBarOptionContainer
+      onClick={addChannelOPtion ? addChannel : selectChannel}
+    >
+      {Icon && <Icon fontSize="small" style={{ padding: 10 }} />}
+
+      {Icon ? (
+        <h3>{title}</h3>
+      ) : (
+        <SideBarOptionChannel>
+          <span>#</span>
+          {title}
+        </SideBarOptionChannel>
+      )}
+    </SideBarOptionContainer>
+  );
 }
 
 export default SideBarOption;
 
 const SideBarOptionContainer = styled.div`
-display:flex;
-font-size:12px;
-align-items:center;
-padding-left:2px;
-cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  padding-left: 2px;
+  cursor: pointer;
 
-:hover{
-    opacity:0.9;
+  :hover {
+    opacity: 0.9;
     background-color: #340c36;
-}
-  > h3{
-
-    font-weight:500;
   }
-  > h3 > span{
-      padding:15px;
-
+  > h3 {
+    font-weight: 500;
+  }
+  > h3 > span {
+    padding: 15px;
   }
 `;
-const SideBarOptionChannel = styled.div`
-
-
-  
+const SideBarOptionChannel = styled.h3`
+  padding: 10px, 0;
+  font-weight: 300;
 `;
