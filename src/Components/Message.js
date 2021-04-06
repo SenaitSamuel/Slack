@@ -38,5 +38,6 @@ const MessageInfo = styled.div`
     font-weight: 300;
     margin-left: 4px;
     font-size: 10px;
+    text-transform: capitalize;
   }
 `;
