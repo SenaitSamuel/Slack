@@ -11,7 +11,6 @@ export const appSlice = createSlice({
     },
   },
 });
-
 export const { enterRoom } = appSlice.actions;
 
 // The function below is called a selector and allows us to select a value from

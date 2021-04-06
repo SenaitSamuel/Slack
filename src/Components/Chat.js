@@ -52,7 +52,6 @@ function Chat() {
           <ChatMessage>
             {roomMessages?.docs.map((doc) => {
               const { message, timeStamp, user, userImage } = doc.data();
-
               return (
                 <Message
                   key={doc.id}

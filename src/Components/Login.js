@@ -18,7 +18,7 @@ function Login() {
           alt="slack"
         />
         <h1>Sing In Slack</h1>
-        <p>Urban.slack</p>
+        <p>UrbanFish.slack</p>
         <Button onClick={signIn}>Sign in with Google</Button>
       </LoginInnerContainer>
     </LoginContainer>

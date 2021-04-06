@@ -5,13 +5,11 @@ import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { Button } from "@material-ui/core";
-import Picker from "emoji-picker-react";
 
 function ChatInput({ channelName, channelId, chatRef }) {
   const [user] = useAuthState(auth);
 
   const [input, setInput] = useState("");
-
   const sendMessage = (e) => {
     e.preventDefault();
 

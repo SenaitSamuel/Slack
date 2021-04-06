@@ -17,7 +17,6 @@ function Header() {
           src={user?.photoURL}
           onClick={() => auth.signOut()}
         />
-
         <AccessTimeIcon />
       </HeaderLeft>
       <HeaderSearch>
