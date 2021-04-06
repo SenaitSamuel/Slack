@@ -98,7 +98,7 @@ const HeaderLeft = styled.div`
 
   > h4 {
     display: flex;
-    text-transform: lowercase;
+    text-transform: capitalize;
     margin-right: 10px;
   }
   > h4 > .MuiSvgIcon-root {
